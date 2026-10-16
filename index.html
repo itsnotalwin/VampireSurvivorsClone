@@ -3,20 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vampire Survivors: Eternal Night</title>
+  <title>Eternal Night — Vampire Survivors Clone</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="game-container">
+  <div id="game-wrapper">
     <canvas id="game-canvas"></canvas>
+
+    <!-- Start Screen -->
+    <div id="start-screen" class="overlay">
+      <h1>ETERNAL NIGHT</h1>
+      <p>Survive until dawn. Move with WASD. Weapons attack automatically.</p>
+      <button id="start-btn">Start Night</button>
+    </div>
+
+    <!-- Level Up Overlay -->
+    <div id="levelup-overlay" class="overlay hidden">
+      <h2>Level Up!</h2>
+      <div id="choices" class="choice-grid"></div>
+    </div>
+
+    <!-- Game Over Overlay -->
+    <div id="gameover-overlay" class="overlay hidden">
+      <h2>DAWN BREAKS</h2>
+      <p>You survived <span id="survive-time">0</span>s</p>
+      <p>Kills: <span id="final-kills">0</span></p>
+      <button id="restart-btn">Try Again</button>
+    </div>
+
+    <!-- UI -->
     <div id="ui">
       <div id="stats">
-        <span>Level: <span id="level">1</span></span>
-        <span>Kills: <span id="kills">0</span></span>
-        <span>Gold: <span id="gold">0</span></span>
+        <div class="stat"><span class="label">LVL</span><span id="level-val">1</span></div>
+        <div class="stat"><span class="label">KILLS</span><span id="kills-val">0</span></div>
+        <div class="stat"><span class="label">XP</span><span id="xp-val">0</span>/<span id="xp-next">10</span></div>
+        <div class="stat"><span class="label">TIME</span><span id="time-val">0:00</span></div>
       </div>
-      <div id="actions" style="display:none;">
-        <button id="regen-btn">Regen Map</button>
+      <div id="weapon-hud" class="weapon-hud"></div>
+      <div id="xp-bar-container">
+        <div id="xp-bar"></div>
       </div>
     </div>
   </div>
